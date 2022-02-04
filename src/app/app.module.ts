@@ -23,7 +23,8 @@ import { UserRegistrationFormComponent } from './user-registration-form/user-reg
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatFormFieldModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
