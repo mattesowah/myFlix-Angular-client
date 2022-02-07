@@ -24,7 +24,8 @@ import { UserRegistrationFormComponent } from './user-registration-form/user-reg
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    FormsModule
     
   ],
   providers: [],
