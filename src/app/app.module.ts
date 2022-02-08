@@ -15,21 +15,23 @@ import { FormsModule } from '@angular/forms';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UserRegistrationFormComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatFormFieldModule,
-    MatDialogModule,
-    FormsModule
-    
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+declarations: [
+AppComponent,
+UserRegistrationFormComponent
+],
+imports: [
+BrowserModule,
+AppRoutingModule,
+BrowserAnimationsModule,
+MatCardModule,
+MatFormFieldModule,
+MatDialogModule,
+FormsModule,
+HttpClientModule,
+MatSnackBarModule,
+MatInputModule
+],
+providers: [],
+bootstrap: [AppComponent]
 })
 export class AppModule { }
