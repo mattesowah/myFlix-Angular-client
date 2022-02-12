@@ -20,4 +20,10 @@ openUserRegistrationDialog(): void {
     width: '480px'
     });
   }
+  openUserLoginDialog(): void {
+    this.dialog.open(UserLoginFormComponent, {
+// Assigning the dialog a width
+    width: '480px'
+    });
+  }
 }
