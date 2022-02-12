@@ -29,7 +29,8 @@ MatDialogModule,
 FormsModule,
 HttpClientModule,
 MatSnackBarModule,
-MatInputModule
+MatInputModule,
+MatButtonModule
 ],
 providers: [],
 bootstrap: [AppComponent]
