@@ -10,7 +10,7 @@
  import { FetchApiDataService } from '../fetch-api-data.service';
  import { MatSnackBar } from '@angular/material/snack-bar';
  // Used to navigate the user to the movies route on a successful login
- import { Router } from '@angular/router'; 
+ import { Router } from '@angular/router';
  
  @Component({
    selector: 'app-user-login-form',
