@@ -47,7 +47,7 @@ MatSnackBarModule,
 MatInputModule,
 MatButtonModule,
 MatIconModule,
-RouterModule
+RouterModule.forRoot(appRoutes)
 ],
 providers: [],
 bootstrap: [AppComponent]
