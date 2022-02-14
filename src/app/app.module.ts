@@ -18,6 +18,13 @@ import { MovieCardComponent } from './movie-card/movie-card.component';
 import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { GenreCardComponent } from './genre-card/genre-card.component';
+import { DirectorCardComponent } from './director-card/director-card.component';
+import { EditProfileFormComponent } from './edit-profile-form/edit-profile-form.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { SynopsisCardComponent } from './synopsis-card/synopsis-card.component';
+
 
 
 const appRoutes: Routes = [
@@ -32,7 +39,13 @@ AppComponent,
 UserRegistrationFormComponent,
 UserLoginFormComponent,
 MovieCardComponent,
-WelcomePageComponent
+WelcomePageComponent,
+UserProfileComponent,
+GenreCardComponent,
+DirectorCardComponent,
+EditProfileFormComponent,
+NavigationComponent,
+SynopsisCardComponent
 ],
 imports: [
 BrowserModule,
