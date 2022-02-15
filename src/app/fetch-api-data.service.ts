@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 // delcaring the api url that will rpovide data for the client app
-const apiUrl = 'https://myflixdb17.herokuapp.com/';
+const apiUrl = 'https://myflixdb17.herokuapp.com';
 // Get token from local storage for requests
 const token = localStorage.getItem('token');
 // Get username from localStorage for URLs
