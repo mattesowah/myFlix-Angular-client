@@ -29,12 +29,13 @@ export class FetchApiDataService {
      * @param userDetails {any}
      * @returns a new user object in json format
      */
-    public userRegistration(userDetails: any): Observable<any> {
-      console.log(userDetails);
-      return this.http
-        .post(apiUrl + '/users', userDetails)
-        .pipe(catchError(this.handleError));
-    }
+    //User Registration
+  public userRegistration(userDetails: any): Observable<any> {
+    console.log(userDetails);
+    return this.http.post(apiUrl + '/users', userDetails).pipe(
+      catchError(this.handleError)
+    );
+  }
   
     /**
      * call API end-point to log in a user
