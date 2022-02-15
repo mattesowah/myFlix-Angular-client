@@ -40,7 +40,7 @@ export class UserProfileComponent implements OnInit {
   getUserInfo(): void {
     const user = localStorage.getItem('user');
     if (user) {
-      this.fetchApiData.getUser(user).subscribe((resp) => {
+      this.fetchApiData.getUser(user).subscribe((resp: any) => {
         this.user = resp;
 
         console.log(this.user);
