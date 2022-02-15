@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Inject } from '@angular/core';
-import { FetchApiData } from '../fetch-api-data.service';
+import { FetchApiDataService } from '../fetch-api-data.service';.
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -23,7 +23,7 @@ export class EditProfileFormComponent implements OnInit {
   };
 
   constructor(
-    public fetchApiData: FetchApiData,
+    public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<EditProfileFormComponent>,
     public snackBar: MatSnackBar
   ) {}
