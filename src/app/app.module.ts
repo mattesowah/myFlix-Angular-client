@@ -24,6 +24,9 @@ import { DirectorCardComponent } from './director-card/director-card.component';
 import { EditProfileFormComponent } from './edit-profile-form/edit-profile-form.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { SynopsisCardComponent } from './synopsis-card/synopsis-card.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 
@@ -59,6 +62,9 @@ FormsModule,
 HttpClientModule,
 MatSnackBarModule,
 MatInputModule,
+MatToolbarModule,
+MatSidenavModule,
+MatDividerModule,
 MatButtonModule,
 MatIconModule,
 RouterModule.forRoot(appRoutes)
