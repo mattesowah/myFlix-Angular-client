@@ -126,7 +126,7 @@ addToFavs(movieId: string): void {
     this.snackBar.open('Already in your favs', 'OK', { duration: 2000 });
     return
   } else {
-    this.fetchApiData.addFavoriteMovie(this.user.Username, movieId).subscribe((resp: any) => {
+    this.fetchApiData.addFavoriteMovie(this.user.Username, MovieID).subscribe((resp: any) => {
       this.getCurrentUser(this.user.Username);
       this.ngOnInit();
       this.snackBar.open('Added to favs', 'OK', { duration: 2000 });
@@ -134,8 +134,8 @@ addToFavs(movieId: string): void {
   }
 }
 
-removeFromFavs(movieId: string): void {
-  this.fetchApiData.removeFromFavs(this.user.Username, movieId).subscribe((resp: any) => {
+removeFromFavs(MovieID: any): void {
+  this.fetchApiData.deleteFavoriteMovie(this.user.Username, MovieID).subscribe((resp: any) => {
     this.snackBar.open('Removed from favs', 'OK', { duration: 2000 });
     this.getCurrentUser(this.user.Username);
     this.ngOnInit();
