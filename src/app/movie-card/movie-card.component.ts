@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { GenreCardComponent } from '../genre-card/genre-card.component';
 import { DirectorCardComponent } from '../director-card/director-card.component';
 import { SynopsisCardComponent } from '../synopsis-card/synopsis-card.component';
+import { Router } from '@angular/router';
 
 @Component({
  selector: 'app-movie-card',
@@ -22,6 +23,7 @@ export class MovieCardComponent implements OnInit {
  constructor(
    public fetchApiData: FetchApiDataService, 
    public dialog: MatDialog, 
+   public router: Router,
    public snackBar: MatSnackBar
  ) { }
 
@@ -75,6 +77,16 @@ export class MovieCardComponent implements OnInit {
      width: '250px' 
    });
  } 
+
+ 
+ logOut(): void {
+  this.router.navigate(['welcome']);
+  localStorage.clear();
+}
+
+openProfile(): void {
+  this.router.navigate(['profile']);
+}
 
  /**
   * Opens a dialog to display the director component, passing it the data it needs to display

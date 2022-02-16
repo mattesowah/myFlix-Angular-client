@@ -1,3 +1,8 @@
+<header>
+    <button (click)="openProfile()" mat-raised-button color="primary">Profile</button>
+    <button (click)="logOut()" mat-raised-button color="primary">Log out</button>
+  </header>
+  
 <div style="display: flex;">
     <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
         <mat-card-header>
