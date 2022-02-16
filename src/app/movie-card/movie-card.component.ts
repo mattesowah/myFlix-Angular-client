@@ -16,9 +16,12 @@ import { Router } from '@angular/router';
 
 export class MovieCardComponent implements OnInit {
  
- username = localStorage.getItem('user');
+ username: any = localStorage.getItem('user');
+ user: any = JSON.parse(this.username);
+ currentUser: any = null;
  movies: any[] = [];
  favourites: any[] = [];
+ isInFavs: boolean = false;
 
  constructor(
    public fetchApiData: FetchApiDataService, 
@@ -34,7 +37,18 @@ export class MovieCardComponent implements OnInit {
  ngOnInit(): void { 
    this.getMovies(); 
    this.getFavouriteMovies();
+   this.getCurrentUser(this.user.Username);
+
  }
+
+ getCurrentUser(username: string): void {
+  this.fetchApiData.getUser(username).subscribe((resp: any) => {
+    this.currentUser = resp;
+    this.favourites = resp.Favorites;
+    return (this.currentUser, this.favourites);
+  });
+}
+
 
  /** 
   * Invokes the getAllMovies method on the fetchApiData service and populates the movies array with
@@ -87,6 +101,48 @@ export class MovieCardComponent implements OnInit {
 openProfile(): void {
   this.router.navigate(['profile']);
 }
+
+favCheck(movieId: string): any {
+  let favIds = this.favourites.map(function (fav: any) { return fav._id });
+  if (favIds.includes(movieId)) {
+    this.isInFavs = true;
+    return this.isInFavs;
+  };
+}
+
+toggleFavs(movieId: string): void {
+  if (this.favourites.filter(function (e: any) { return e._id === movieId; }).length > 0) {
+    this.removeFromFavs(movieId);
+    this.isInFavs = false;
+  } else {
+    this.addToFavs(movieId)
+    this.isInFavs = true;
+  }
+}
+
+addToFavs(movieId: string): void {
+  //checking if the title is already in favs
+  if (this.favourites.filter(function (e: any) { return e._id === movieId; }).length > 0) {
+    this.snackBar.open('Already in your favs', 'OK', { duration: 2000 });
+    return
+  } else {
+    this.fetchApiData.addFavoriteMovie(this.user.Username, movieId).subscribe((resp: any) => {
+      this.getCurrentUser(this.user.Username);
+      this.ngOnInit();
+      this.snackBar.open('Added to favs', 'OK', { duration: 2000 });
+    });
+  }
+}
+
+removeFromFavs(movieId: string): void {
+  this.fetchApiData.removeFromFavs(this.user.Username, movieId).subscribe((resp: any) => {
+    this.snackBar.open('Removed from favs', 'OK', { duration: 2000 });
+    this.getCurrentUser(this.user.Username);
+    this.ngOnInit();
+    2000
+  });
+}
+
 
  /**
   * Opens a dialog to display the director component, passing it the data it needs to display
