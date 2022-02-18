@@ -17,7 +17,6 @@ import { Router } from '@angular/router';
 export class MovieCardComponent implements OnInit {
  
  username: any = localStorage.getItem('user');
- user: any = JSON.parse(this.username);
  currentUser: any = null;
  movies: any[] = [];
  favourites: any[] = [];
@@ -37,7 +36,7 @@ export class MovieCardComponent implements OnInit {
  ngOnInit(): void { 
    this.getMovies(); 
    this.getFavouriteMovies();
-   this.getCurrentUser(this.user.Username);
+   this.getCurrentUser(this.username);
 
  }
 
@@ -126,8 +125,8 @@ addToFavs(movieId: string): void {
     this.snackBar.open('Already in your favs', 'OK', { duration: 2000 });
     return
   } else {
-    this.fetchApiData.addFavoriteMovie(this.user.Username, MovieID).subscribe((resp: any) => {
-      this.getCurrentUser(this.user.Username);
+    this.fetchApiData.addFavoriteMovie(movieId).subscribe((resp: any) => {
+      this.getCurrentUser(this.username);
       this.ngOnInit();
       this.snackBar.open('Added to favs', 'OK', { duration: 2000 });
     });
@@ -135,9 +134,9 @@ addToFavs(movieId: string): void {
 }
 
 removeFromFavs(MovieID: any): void {
-  this.fetchApiData.deleteFavoriteMovie(this.user.Username, MovieID).subscribe((resp: any) => {
+  this.fetchApiData.deleteFavoriteMovie(MovieID).subscribe((resp: any) => {
     this.snackBar.open('Removed from favs', 'OK', { duration: 2000 });
-    this.getCurrentUser(this.user.Username);
+    this.getCurrentUser(this.username);
     this.ngOnInit();
     2000
   });
