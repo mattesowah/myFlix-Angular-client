@@ -43,7 +43,7 @@ export class MovieCardComponent implements OnInit {
  getCurrentUser(username: string): void {
   this.fetchApiData.getUser(username).subscribe((resp: any) => {
     this.currentUser = resp;
-    this.favourites = resp.Favorites;
+    this.favourites = resp.FavoriteMovies;
     return (this.currentUser, this.favourites);
   });
 }
@@ -62,7 +62,8 @@ export class MovieCardComponent implements OnInit {
   * the favouriteMovies property on the response, which is an array of the user's favourite movies. 
   */
  getFavouriteMovies(): void {
-   this.fetchApiData.getUser(this.username!).subscribe((resp: any) => { this.favourites = resp.FavouriteMovies });
+   this.fetchApiData.getUser(this.username).subscribe((resp: any) => { this.favourites = resp.FavoriteMovies
+   });
  }
 
  /** 
@@ -102,8 +103,8 @@ openProfile(): void {
 }
 
 favCheck(movieId: string): any {
-  let favIds = this.favourites.map(function (fav: any) { return fav._id });
-  if (favIds.includes(movieId)) {
+  console.log(this.favourites);
+  if (this.favourites.includes(movieId)) {
     this.isInFavs = true;
     return this.isInFavs;
   };
