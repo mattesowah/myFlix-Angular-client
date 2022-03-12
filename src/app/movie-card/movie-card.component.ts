@@ -102,7 +102,11 @@ export class MovieCardComponent implements OnInit {
 openProfile(): void {
   this.router.navigate(['profile']);
 }
-
+/**
+ * 
+ * @param movieId {string} 
+ * @returns list of movie that are located in the favourites list
+ */
 favCheck(movieId: string): any {
   console.log(this.favourites);
   if (this.favourites.includes(movieId)) {
