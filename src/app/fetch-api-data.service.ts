@@ -144,7 +144,7 @@ export class FetchApiDataService {
       const token = localStorage.getItem('token');
       const Username = localStorage.getItem('user');
       return this.http
-        .put(apiUrl + '/users/' + Username + '/movies/' + MovieID, null, {
+        .post(apiUrl + '/users/' + Username + '/movies/' + MovieID, null, {
           headers: new HttpHeaders({ Authorization: 'Bearer ' + token }),
         })
         .pipe(map(this.extractResponseData), catchError(this.handleError));

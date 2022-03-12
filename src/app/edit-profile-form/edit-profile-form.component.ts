@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-profile-form',
@@ -25,7 +26,8 @@ export class EditProfileFormComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<EditProfileFormComponent>,
-    public snackBar: MatSnackBar
+    public snackBar: MatSnackBar,
+    public router: Router
   ) {}
 
   ngOnInit(): void {
@@ -55,6 +57,8 @@ export class EditProfileFormComponent implements OnInit {
       .editUser(this.Username, this.userProfile)
       .subscribe((resp) => {
         this.dialogRef.close();
+        window.location.reload();
+        this.router.navigate(['welcome']); // Navigates to the movies route
 
         // update profile in localstorage
         localStorage.setItem('Username', this.userProfile.Username);
