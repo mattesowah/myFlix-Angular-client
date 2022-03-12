@@ -52,47 +52,12 @@
       <div class="img-container">
         <img src="{{ favorite.ImagePath }}" alt="{{ favorite.Title }}" />
       </div>
-      <mat-card-actions class="fav-action">
-        <button
-          mat-button
-          color="accent"
-          id="fav-action-btn"
-          (click)="openSynopsisDialog(favorite.Title, favorite.Description)"
-        >
-          Synopsis
-        </button>
-        <button
-          mat-button
-          color="accent"
-          id="fav-action-btn"
-          (click)="
-            openGenreDialog(favorite.Genre.Name, favorite.Genre.Description)
-          "
-        >
-          Genre
-        </button>
-        <button
-          mat-button
-          color="accent"
-          id="fav-action-btn"
-          (click)="
-            openDirectorDialog(
-              favorite.Director.Name,
-              favorite.Director.Bio,
-              favorite.Director.Birth,
-              favorite.Director.Death
-            )
-          "
-        >
-          Director
-        </button>
-      </mat-card-actions>
-  
+      
       <button
         mat-icon-button
         (click)="removeFavoriteMovie(favorite._id, favorite.title)"
       >
-        <mat-icon class="remove-btn">remove_circle</mat-icon>
+        <mat-icon class="remove-btn">X</mat-icon>
       </button>
     </mat-card>
   </div>
