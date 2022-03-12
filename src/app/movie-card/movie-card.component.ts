@@ -57,10 +57,11 @@ export class MovieCardComponent implements OnInit {
    this.fetchApiData.getAllMovies().subscribe((resp: any) => { this.movies = resp });
  }
 
- /** 
-  * Invokes the getUser method on the fetchApiData service and populates the favourites array with
-  * the favouriteMovies property on the response, which is an array of the user's favourite movies. 
-  */
+  /**
+   * call api endpoint to get users list of favorite movies
+   * @param username
+   * @returns a list of the favorite movies of the user in json format
+   */
  getFavouriteMovies(): void {
    this.fetchApiData.getUser(this.username).subscribe((resp: any) => { this.favourites = resp.FavoriteMovies
    });
@@ -110,6 +111,14 @@ favCheck(movieId: string): any {
   };
 }
 
+/**
+   * add or remove favorite movie
+   * if the movie is not on the favorite list, call
+   * @function addFavoriteMovies
+   * if the movie is already on the user favorite list, call
+   * @function removeFavoriteMovies
+   * @param movieId {string}
+   */
 toggleFavs(movieId: string): void {
   if (this.favourites.filter(function (e: any) { return e._id === movieId; }).length > 0) {
     this.removeFromFavs(movieId);
@@ -120,6 +129,12 @@ toggleFavs(movieId: string): void {
   }
 }
 
+
+ /**
+   * call api endpoint to add a movie to the favorite mobvielist of user
+   * @param MovieID
+   * @returns the favorite movielist of user in json format
+   */
 addToFavs(movieId: string): void {
   //checking if the title is already in favs
   if (this.favourites.filter(function (e: any) { return e._id === movieId; }).length > 0) {
@@ -134,6 +149,12 @@ addToFavs(movieId: string): void {
   }
 }
 
+
+  /**
+   * call api endpoint to delete a favorite movie from the users favorite list
+   * @param MovieID {any}
+   * @returns updated user's information after removed a movie from the list in json format
+   */
 removeFromFavs(MovieID: any): void {
   this.fetchApiData.deleteFavoriteMovie(MovieID).subscribe((resp: any) => {
     this.snackBar.open('Removed from favs', 'OK', { duration: 2000 });
