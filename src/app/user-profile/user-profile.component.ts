@@ -16,6 +16,7 @@ import { SynopsisCardComponent } from '../synopsis-card/synopsis-card.component'
 export class UserProfileComponent implements OnInit {
   user: any = {};
   Username = localStorage.getItem('user');
+  Movie = localStorage.getItem('movie');
 
   FavMovies: any[] = [];
 
@@ -52,13 +53,10 @@ export class UserProfileComponent implements OnInit {
    * get user's FavoriteMovies from the user's data
    */
   getFavoriteMovies(): void {
-    const user = localStorage.getItem('user');
-    this.fetchApiData.getUser(user).subscribe((resp: any) => {
-      this.FavMovies = resp.FavoriteMovies;
-      console.log(this.FavMovies);
-      return this.FavMovies;
-    });
+    this.fetchApiData.getMovie(this.Movie!).subscribe((resp: any) => { this.FavMovies = resp.FavouriteMovies });
   }
+
+
 
   /**
    * use API end-point to remove user favorite
