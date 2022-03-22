@@ -58,7 +58,12 @@ use API end-point to remove user favorite
 @function deleteFavoriteMovie
 @param MovieId {string}
 @param title {string}
-@returns updated user's data in json format */ removeFavoriteMovie(MovieId: string, title: string): void { this.fetchApiData.deleteFavoriteMovie(MovieId).subscribe((resp: any) => { console.log(resp); this.snackBar.open( `${title} has been removed from your favorites!`, 'OK', { duration: 4000, } ); this.ngOnInit(); }); }
+@returns updated user's data in json format */ 
+removeFavoriteMovie(MovieId: string, title: string): void {
+ this.fetchApiData.deleteFavoriteMovie(MovieId).subscribe((resp: any) => { console.log(resp);
+ this.snackBar.open( `${title} has been removed from your favorites!`, 'OK', { duration: 4000, } );
+ window.location.reload();
+ this.ngOnInit(); }); }/*add logic to refresh page*/
 /**
 
 call API end-point to remove the current user
